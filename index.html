@@ -9,6 +9,7 @@
 	<title>Evan Marcus Portfolio Website</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 </head>
@@ -19,7 +20,7 @@
 
 		<!-- Header -->
 		<header id="header" class="alt">
-			<span class="logo"><img src="images/Cube-Logo-small.png" alt="" /></span>
+			<span class="logo"><img src="images/Grayed_Out_EMM_Logo_High_Contrast.png" alt="" /></span>
 			<h1>Evan Marcus</h1>
 			<p>Programmer,  Animator,  Game Designer</p>
 		</header>
@@ -44,7 +45,7 @@
 						<header class="major">
 							<h2>About Me</h2>
 						</header>
-						<p>Evan is currently a Senior at the University of Michigan studying Computer Science.</p>
+						<p>I am currently a Senior at the University of Michigan studying Computer Science.</p>
 						<ul class="actions">
 							<li><a href="https://www.linkedin.com/in/evan-marcus-umich/" class="button">LinkedIn</a></li>
 						</ul>
@@ -68,122 +69,153 @@
 								<!--<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>-->
 								<!--<model-viewer alt="Garbot" src="models/Robot1.glb" ar environment-image="neutral" poster="" shadow-intensity="1" camera-controls touch-action="pan-y"></model-viewer>-->
 								<!--<style>
-									.center-container {
-										display: flex;
-										justify-content: center;
-										align-items: center;
-										height: 50vh; /* Full viewport height */
-										margin: 0; /* Remove any default margin from body */
-									}
-								</style>
+			.center-container {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 50vh; /* Full viewport height */
+				margin: 0; /* Remove any default margin from body */
+			}
+		</style>
 
-								<div class="center-container">
-									<model-viewer alt="Garbot"
-												  src="models/Robot1.glb"
-												  ar
-												  environment-image="neutral"
-												  poster=""
-												  shadow-intensity="1"
-												  camera-controls
-												  touch-action="pan-y">
-									</model-viewer>
-								</div>-->
+		<div class="center-container">
+			<model-viewer alt="Garbot"
+						  src="models/Robot1.glb"
+						  ar
+						  environment-image="neutral"
+						  poster=""
+						  shadow-intensity="1"
+						  camera-controls
+						  touch-action="pan-y">
+			</model-viewer>
+		</div>-->
 								<iframe frameborder="0" src="https://itch.io/embed/3091665?linkback=true&amp;border_width=5" width="560" height="175"><a href="https://evmarcus.itch.io/pick-it-up">Pick It Up! by Evan Marcus, pgw25, umaira05, fcolson</a></iframe>
 								<!--<span class="icon solid major fa-gamepad"></span>-->
-								<h3>Pick It Up! (Full Release)</h3>
+								<h3 id="bold">Pick It Up! (Full Release)</h3>
 								<h3>Following my 2-week proof of concept, I oversaw a development team of 5 members to expand upon Pick It Up! to great success. I modeled and animated original 3D characters in Blender, animated 2D story cutscenes in the Adobe Animate CC, and organized the team and collaborators (including a composer and several voice actors), among other responsibilities. Developed for the class EECS 494, we won the Fall 2024 showcase. Developed in C# using the Unity game engine.</h3>
 								<p><a href="https://evmarcus.itch.io/pick-it-up">Itch.io</a></p>
+							</section>
+							<hr id="horizontal-line">
+							<section>
+								<!--<iframe width="560" height="315" src="https://www.youtube.com/embed/oPMJyvH2ZZw?si=u55fBzvgkurmJPWc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>-->
+								<!-- Embedded web game (delayed load until player clicks) credit to Austin Yarger at eecs298.com-->
+								<div id="game-container" class="w3-content w3-display-container" style="display:flex; justify-content:center; align-items:center; border-radius: 50px;">
+
+									<button class="glow-bounce-button" onclick="loadGame()">Launch Game</button>
+
+									<video autoplay muted loop id="background-video">
+										<source src="videos/background-video.mp4" type="video/mp4" />
+
+									</video>
+
+								</div>
+
+								<script>
+									function loadGame() {
+										document.getElementById("game-container").innerHTML =
+											'<iframe src="https://eecs298.com/student_data/ayarger7/platformer/2025_02_16_00_44_01/index.html" width="980" height="436" frameborder="0" allowfullscreen></iframe>';
+									}
+								</script>
+
+								<!--<span class="icon solid major fa-gamepad"></span>-->
+								<p></p>
+								<h3 id="bold">EECS 298: 3D Technical Art and Animation</h3id="bold">
+								<h3>I worked with <a href="https://ayarger.com/">Professor Austin Yarger</a> to develop <a href="https://eecs298.com/">EECS 298</a>, and 3D technical art and animation course for the University of Michigan. I developed homework assignments, 3D model and code assets for students to use in projects, and lecture content surrounding Blender, Unity, and the principles of animation.</h3>
+								<p></p>
 
 							</section>
+							<hr id="horizontal-line">
 							<section>
 								<!--<span class="logo"><img src="images/Pick_It_Up!_Small.png" alt="" /></span>-->
 								<iframe frameborder="0" src="https://itch.io/embed/3034717?border_width=5" width="560" height="175"><a href="https://evmarcus.itch.io/pick-it-up-demo">Pick It Up! Demo by Evan Marcus</a></iframe>
 								<!--<span class="icon solid major fa-gamepad"></span>-->
-								<h3>Pick It Up! (2-week Unity Demo)</h3>
+								<h3 id="bold">Pick It Up! (2-week Unity Demo)</h3>
 								<h3>Created in two weeks for EECS 494, this was my first foray into full 3D game development. I taught myself how to implement animated character controllers, multiplayer support, particles and lighting, and much more. The game is a multiplayer action game about two robots competing to clean up the most trash under the time limit. Developed in C# using the Unity game engine for Project 2 Gold.</h3>
 								<p><a href="https://evmarcus.itch.io/pick-it-up-demo">Itch.io</a></p>
 							</section>
+							<hr id="horizontal-line">
 							<section>
 								<!--<span class="logo"><img src="images/Metroid_Title_Screen_Small.png" alt="" /></span>-->
 								<!--<iframe frameborder="0" src="https://itch.io/embed-upload/11564153?color=ff947b" allowfullscreen="" width="768" height="740"><a href="https://umaira05.itch.io/metroid-nes-unity-remake">Play Metroid NES (Unity Remake) on itch.io</a></iframe>-->
 								<iframe frameborder="0" src="https://itch.io/embed/2995102?border_width=5" width="560" height="175"><a href="https://umaira05.itch.io/metroid-nes-unity-remake">Metroid NES (Unity Remake) by umaira05, Evan Marcus</a></iframe>
 								<!--<span class="icon solid major fa-gamepad"></span>-->
-								<h3>Metroid (Unity Remake)</h3>
+								<h3 id="bold">Metroid (Unity Remake)</h3>
 								<h3>Created with <a href="https://umaira05.github.io/">Umair Ahmed</a> for EECS 494, this is a full recreation of the first area of Metroid for the NES. I faithfully recreated the game's player controls and camera system, among other features. We also created a completely original level with a new mechanic, with tutorial and some level designs implemented by me. Developed in C# using the Unity game engine in about two weeks.</h3>
 								<p><a href="https://umaira05.itch.io/metroid-nes-unity-remake">Itch.io</a></p>
 							</section>
+							<hr id="horizontal-line">
 							<section>
 								<!--<span class="icon solid major fa-code"></span>-->
 								<!--<iframe frameborder="0" src="https://itch.io/embed-upload/11342580?color=ffe68f" allowfullscreen="" width="640" height="380"><a href="https://evmarcus.itch.io/roll-a-beach-ball">Play Roll-a-Beach-Ball on itch.io</a></iframe>-->
 								<iframe frameborder="0" src="https://itch.io/embed/2936109?border_width=5" width="560" height="175"><a href="https://evmarcus.itch.io/roll-a-beach-ball">Roll-a-Beach-Ball by Evan Marcus</a></iframe>
-								<h3>Roll-a-Ball</h3>
+								<h3 id="bold">Roll-a-Ball</h3>
 								<p>Simple 3D Platformer heavily based on the Unity Tutorial of the same name. Developed in C# using the Unity game engine. <a href="https://evmarcus.itch.io/roll-a-beach-ball">Itch.io</a></p>
 							</section>
 							<!--<section>
-									<span class="icon solid major fa-cog"></span>
-									<h3>TO BE ADDED: Project 3</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-desktop"></span>
-									<h3>TO BE ADDED: Project 4</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-film"></span>
-									<h3>TO BE ADDED: Project 5</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-camera"></span>
-									<h3>TO BE ADDED: Project 6</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-chalkboard-teacher"></span>
-									<h3>TO BE ADDED: Project 7</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-cube"></span>
-									<h3>TO BE ADDED: Project 8</h3>
-									<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
-								</section>
-							</div>-->
+			<span class="icon solid major fa-cog"></span>
+			<h3>TO BE ADDED: Project 3</h3>
+			<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+		</section>
+		<section>
+			<span class="icon solid major fa-desktop"></span>
+			<h3>TO BE ADDED: Project 4</h3>
+			<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+		</section>
+		<section>
+			<span class="icon solid major fa-film"></span>
+			<h3>TO BE ADDED: Project 5</h3>
+			<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+		</section>
+		<section>
+			<span class="icon solid major fa-camera"></span>
+			<h3>TO BE ADDED: Project 6</h3>
+			<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+		</section>
+		<section>
+			<span class="icon solid major fa-chalkboard-teacher"></span>
+			<h3>TO BE ADDED: Project 7</h3>
+			<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+		</section>
+		<section>
+			<span class="icon solid major fa-cube"></span>
+			<h3>TO BE ADDED: Project 8</h3>
+			<p>Phasellus convallis elit id ullam corper amet et pulvinar. Duis aliquam turpis mauris, sed ultricies erat dapibus.</p>
+		</section>
+	</div>-->
 							<!--ul class="actions">
-										<li><a href="generic.html" class="button">Learn more</a></li>
-									</ul>
-								</div>
-							</header>
-							<ul class="statistics">
-								<li class="style1">
-									<span class="icon solid fa-code-branch"></span>
-									<strong>5,120</strong> Etiam
-								</li>
-								<li class="style2">
-									<span class="icon fa-folder-open"></span>
-									<strong>8,192</strong> Magna
-								</li>
-								<li class="style3">
-									<span class="icon solid fa-signal"></span>
-									<strong>2,048</strong> Tempus
-								</li>
-								<li class="style4">
-									<span class="icon solid fa-laptop"></span>
-									<strong>4,096</strong> Aliquam
-								</li>
-								<li class="style5">
-									<span class="icon fa-gem"></span>
-									<strong>1,024</strong> Nullam
-								</li>
-							</ul>
-							<p class="content">Nam elementum nisl et mi a commodo porttitor. Morbi sit amet nisl eu arcu faucibus hendrerit vel a risus. Nam a orci mi, elementum ac arcu sit amet, fermentum pellentesque et purus. Integer maximus varius lorem, sed convallis diam accumsan sed. Etiam porttitor placerat sapien, sed eleifend a enim pulvinar faucibus semper quis ut arcu. Ut non nisl a mollis est efficitur vestibulum. Integer eget purus nec nulla mattis et accumsan ut magna libero. Morbi auctor iaculis porttitor. Sed ut magna ac risus et hendrerit scelerisque. Praesent eleifend lacus in lectus aliquam porta. Cras eu ornare dui curabitur lacinia.</p>
-							<footer class="major">
-								<ul class="actions special">
-									<li><a href="generic.html" class="button">Learn More</a></li>
-								</ul>
-							</footer>-->
-			</section>
+				<li><a href="generic.html" class="button">Learn more</a></li>
+			</ul>
+		</div>
+	</header>
+	<ul class="statistics">
+		<li class="style1">
+			<span class="icon solid fa-code-branch"></span>
+			<strong>5,120</strong> Etiam
+		</li>
+		<li class="style2">
+			<span class="icon fa-folder-open"></span>
+			<strong>8,192</strong> Magna
+		</li>
+		<li class="style3">
+			<span class="icon solid fa-signal"></span>
+			<strong>2,048</strong> Tempus
+		</li>
+		<li class="style4">
+			<span class="icon solid fa-laptop"></span>
+			<strong>4,096</strong> Aliquam
+		</li>
+		<li class="style5">
+			<span class="icon fa-gem"></span>
+			<strong>1,024</strong> Nullam
+		</li>
+	</ul>
+	<p class="content">Nam elementum nisl et mi a commodo porttitor. Morbi sit amet nisl eu arcu faucibus hendrerit vel a risus. Nam a orci mi, elementum ac arcu sit amet, fermentum pellentesque et purus. Integer maximus varius lorem, sed convallis diam accumsan sed. Etiam porttitor placerat sapien, sed eleifend a enim pulvinar faucibus semper quis ut arcu. Ut non nisl a mollis est efficitur vestibulum. Integer eget purus nec nulla mattis et accumsan ut magna libero. Morbi auctor iaculis porttitor. Sed ut magna ac risus et hendrerit scelerisque. Praesent eleifend lacus in lectus aliquam porta. Cras eu ornare dui curabitur lacinia.</p>
+	<footer class="major">
+		<ul class="actions special">
+			<li><a href="generic.html" class="button">Learn More</a></li>
+		</ul>
+	</footer>-->
+</section>
 
 			<!-- Second Section -->
 			<section id="second" class="main special">
@@ -193,7 +225,7 @@
 				<ul class="features">
 					<li>
 						<span class="icon solid major style1 fa-code"></span>
-						<h3>Programming</h3>
+						<h3 id="bold">Programming</h3>
 						<p>I am proficient in C, C++, C#, Python, and Unity.</p>
 					</li>
 					<li>
@@ -205,13 +237,13 @@
 						</div>
 						<!--<span class=<model-viewer alt="Garbot" src="models/Robot1.glb" ar environment-image="neutral" poster="" shadow-intensity="1" camera-controls touch-action="pan-y"></model-viewer></span>
 						<!--<span class="icon solid major style3 fa-cube"></span>-->
-						<h3>3D and Technical Art</h3>
+						<h3 id="bold">3D and Technical Art</h3>
 						<p>I am proficient in Blender, Adobe Photoshop, Adobe Illustrator, and more, including physical mediums.</p>
 					</li>
 					<li>
 						<!--icon major style5 fa-gem-->
 						<span class="icon solid major style4 fa-film"></span>
-						<h3>Filmmaking and Editing</h3>
+						<h3 id="bold">Filmmaking and Editing</h3>
 						<p>I am proficient in Adobe Animate, Adobe AfterEffects, Adobe Premier Pro, and more.</p>
 					</li>
 				</ul>

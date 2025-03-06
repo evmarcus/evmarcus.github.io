@@ -1925,7 +1925,7 @@ body {
 	.button {
 		background-color: transparent;
 		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
-		color: #ffffff !important;
+		color: #ffffff;
 	}
 
 		input[type="submit"]:hover,
@@ -3121,7 +3121,7 @@ body {
 				#header.alt .logo img {
 					display: block;
 					margin: 0 auto;
-					max-width: 75%;
+					max-width: 10%;
 				}
 
 		@media screen and (max-width: 1280px) {
@@ -3783,3 +3783,64 @@ body {
 			}
 
 		}
+
+#bold {
+	font-weight: bold;
+}
+
+button.glow-bounce-button {
+	background-color: white !important;
+	color: white;
+	font-size: 18px !important;
+	font-weight: bold;
+	padding: 20px 50px; /* Reduced padding for a less tall button */
+	border: none;
+	cursor: pointer;
+	border-radius: 30px; /* More rounded shape for a sleeker look */
+	box-shadow: 0 0 10px #ff6600;
+	transition: 0.3s;
+	animation: glow 1.5s infinite alternate, bounce 1.5s infinite;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100px;
+	height: 60px;
+	z-index: 4;
+	position: absolute;
+}
+
+@keyframes glow {
+	0% {
+		box-shadow: 0 0 10px white;
+	}
+
+	100% {
+		box-shadow: 0 0 20px white;
+	}
+}
+
+@keyframes bounce {
+	0%, 100% {
+		transform: translateY(0);
+	}
+
+	50% {
+		transform: translateY(-5px);
+	}
+	/* Smaller bounce for a subtle effect */
+}
+
+/* Background Video */
+#background-video {
+	position: relative;
+	opacity: 0.5; /* Faded effect */
+	z-index: 1; /* Moves it behind the button */
+	filter: blur(5px);
+	padding: 10px;
+}
+
+#horizontal-line {
+	border: none; /* Removes the default 3D effect */
+	border-top: 2px dotted black; /* Dotted line */
+	width: 80%; /* Ensures it spans the full width */
+}
