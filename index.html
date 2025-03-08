@@ -137,19 +137,19 @@
 							<section>
 								<!--<span class="logo"><img src="images/Metroid_Title_Screen_Small.png" alt="" /></span>-->
 								<!--<iframe frameborder="0" src="https://itch.io/embed-upload/11564153?color=ff947b" allowfullscreen="" width="768" height="740"><a href="https://umaira05.itch.io/metroid-nes-unity-remake">Play Metroid NES (Unity Remake) on itch.io</a></iframe>-->
-								<iframe frameborder="0" src="https://itch.io/embed/2995102?border_width=5" width="560" height="175"><a href="https://umaira05.itch.io/metroid-nes-unity-remake">Metroid NES (Unity Remake) by umaira05, Evan Marcus</a></iframe>
+								<!--<iframe frameborder="0" src="https://itch.io/embed/2995102?border_width=5" width="560" height="175"><a href="https://umaira05.itch.io/metroid-nes-unity-remake">Metroid NES (Unity Remake) by umaira05, Evan Marcus</a></iframe>-->
 								<div id="metroid-container" class="w3-content w3-display-container" style="display:flex; justify-content:center; align-items:center; border-radius: 50px;">
 
 									<button class="glow-bounce-button" onclick="loadMetroid()">Launch Game</button>
 
-									<img id="background-video" src="images/Metroid_Title_Screen_Small.png"/>
+									<img id="background-video" src="images/Metroid_Title_Screen_Small.png" />
 
 								</div>
-
+								<p></p>
 								<script>
 									function loadMetroid() {
 										document.getElementById("metroid-container").innerHTML =
-											'<iframe src="games/Metroid/index.html" width="768" height="740" frameborder="0" allowfullscreen></iframe>';
+											'<iframe frameborder="0" src="https://itch.io/embed-upload/11564153?color=ff947b" allowfullscreen="" width="768" height="740"><a href="https://umaira05.itch.io/metroid-nes-unity-remake">Play Metroid NES (Unity Remake) on itch.io</a></iframe><div></div><p><b>Controls:</b><br><b>Arrow Keys:</b> Movement<br><b>C/Z:</b> Jump<br><b>X:</b> Shoot<br><b>Space:</b> Swap weapons<br><b>Enter:</b> Pause<br><b>1:</b> Cheat mode<br></p>';
 									}
 								</script>
 								<!--<span class="icon solid major fa-gamepad"></span>-->
