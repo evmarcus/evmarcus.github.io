@@ -138,6 +138,23 @@
 								<!--<span class="logo"><img src="images/Metroid_Title_Screen_Small.png" alt="" /></span>-->
 								<!--<iframe frameborder="0" src="https://itch.io/embed-upload/11564153?color=ff947b" allowfullscreen="" width="768" height="740"><a href="https://umaira05.itch.io/metroid-nes-unity-remake">Play Metroid NES (Unity Remake) on itch.io</a></iframe>-->
 								<iframe frameborder="0" src="https://itch.io/embed/2995102?border_width=5" width="560" height="175"><a href="https://umaira05.itch.io/metroid-nes-unity-remake">Metroid NES (Unity Remake) by umaira05, Evan Marcus</a></iframe>
+								<div id="metroid-container" class="w3-content w3-display-container" style="display:flex; justify-content:center; align-items:center; border-radius: 50px;">
+
+									<button class="glow-bounce-button" onclick="loadMetroid()">Launch Game</button>
+
+									<video autoplay muted loop id="background-video">
+										<source src="videos/background-video.mp4" type="video/mp4" />
+
+									</video>
+
+								</div>
+
+								<script>
+									function loadMetroid() {
+										document.getElementById("metroid-container").innerHTML =
+											'<iframe src="https://evmarcus.github.io/games/Metroid/index.html" width="768" height="740" frameborder="0" allowfullscreen></iframe>';
+									}
+								</script>
 								<!--<span class="icon solid major fa-gamepad"></span>-->
 								<h3 id="bold">Metroid (Unity Remake)</h3>
 								<h3>Created with <a href="https://umaira05.github.io/">Umair Ahmed</a> for EECS 494, this is a full recreation of the first area of Metroid for the NES. I faithfully recreated the game's player controls and camera system, among other features. We also created a completely original level with a new mechanic, with tutorial and some level designs implemented by me. Developed in C# using the Unity game engine in about two weeks.</h3>
