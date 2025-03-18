@@ -99,15 +99,15 @@
 							<section>
 								<!--<iframe width="560" height="315" src="https://www.youtube.com/embed/oPMJyvH2ZZw?si=u55fBzvgkurmJPWc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>-->
 								<!-- Embedded web game (delayed load until player clicks) credit to Austin Yarger at eecs298.com-->
-								<div id="game-container" class="w3-content w3-display-container" style="display:flex; justify-content:center; align-items:center; border-radius: 50px;">
+								<div id="game-container" class="w3-content w3-display-container" style="display: flex; justify-content: center; align-items: center; gap: 20px; /* Adds spacing between elements */ border-radius: 50px;">
 
-									<img src="images/MarioJumping.gif" style="margin-left: 20px; border-radius: 10px;" height="436" />
+									<img src="images/MarioJumping.gif" style="margin-left: 20px; border-radius: 10px; max-width: 25%; max-height: 325px;" />
 									<button class="glow-bounce-button" onclick="loadGame()">Launch Game</button>
-									<video autoplay muted loop id="background-video" height="436">
-										<source src="videos/298Footage.mp4" type="video/mp4" height="436"/>
+									<video autoplay muted loop id="background-video" style="max-width: 50%; max-height: 436px;">
+										<source src="videos/298Footage.mp4" type="video/mp4" style="max-width: 50%; max-height: 436px;"/>
 
 									</video>
-									<img src="images/298Homework.gif" style="mix-blend-mode: multiply;" height="436" />
+									<img src="images/298Homework.gif" style="mix-blend-mode: multiply; max-width: 25%; max-height: 325px;" />
 
 
 								</div>
