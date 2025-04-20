@@ -1,0 +1,776 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>HireMe Engine API Documentation</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			line-height: 1.6;
+			margin: 20px;
+		}
+
+		.section-heading {
+			font-size: 28px;
+			cursor: pointer;
+			margin-top: 40px;
+			color: #0275d8;
+			border-bottom: 2px solid #ddd;
+			padding-bottom: 10px;
+		}
+
+		.api-call {
+			margin-bottom: 20px;
+			padding-bottom: 10px;
+			border-bottom: 2px solid #ddd;
+		}
+
+			.api-call h2 {
+				color: #333;
+			}
+
+		.class-heading {
+			color: #333;
+		}
+
+		.description, .parameters, .example {
+			margin-bottom: 10px;
+		}
+
+			.description strong, .parameters strong, .example strong {
+				display: block;
+				margin-bottom: 5px;
+				color: #000;
+			}
+
+		code {
+			background-color: #f4f4f4;
+			display: inline-block;
+			padding: 2px 5px;
+			margin: 0 2px;
+			border-radius: 5px;
+		}
+
+		.table-of-contents {
+			padding: 20px;
+			background-color: #f9f9f9;
+			border-radius: 8px;
+			border: 1px solid #ddd;
+			margin-bottom: 20px;
+		}
+
+			.table-of-contents h2 {
+				color: #333;
+				font-size: 24px;
+				margin-bottom: 10px;
+			}
+
+			.table-of-contents ul {
+				list-style: none;
+				padding-left: 0;
+			}
+
+			.table-of-contents li {
+				margin-bottom: 5px;
+			}
+
+			.table-of-contents a {
+				color: #0275d8;
+				text-decoration: none;
+				font-weight: bold;
+			}
+
+				.table-of-contents a:hover {
+					text-decoration: underline;
+				}
+	</style>
+</head>
+<body>
+	<h1>HireMe Engine API Documentation</h1>
+	<p>This documentation outlines the available API calls and custom classes within the HireMe game engine. This is not yet comprehensive, but new documentation is in the works. Heavy credit to Nick Cerrone (ncerroneumich on GitHub) for contributing the majority of this documentation.</p>
+
+	<div class="table-of-contents">
+		<h2>Table of Contents</h2>
+		<ul>
+			<li><a href="#custom-classes">Custom Lua Classes</a></li>
+			<li><a href="#actor-class">Actor</a></li>
+			<li><a href="#vector2-class">Vector2</a></li>
+			<li><a href="#application-api">Application API</a></li>
+			<li><a href="#input-api">Input API</a></li>
+			<li><a href="#actor-api">Actor API</a></li>
+			<li><a href="#text-api">Text API</a></li>
+			<li><a href="#audio-api">Audio API</a></li>
+			<li><a href="#image-api">Image API</a></li>
+			<li><a href="#camera-api">Camera API</a></li>
+			<li><a href="#scene-api">Scene API</a></li>
+			<li><a href="#scene-api">EventBus API (TO BE ADDED)</a></li>
+			<li><a href="#scene-api">Physics API (TO BE ADDED)</a></li>
+			<li><a href="#scene-api">Particle System API (TO BE ADDED)</a></li>
+		</ul>
+	</div>
+
+	<section id="custom-classes">
+		<h1 class="section-heading">Custom Lua Classes</h1>
+		<p>This section provides documentation on C++ classes that have been made accessible in Lua through LuaBridge, detailing available methods and their usage.</p>
+
+		<div class="class-section" id="actor-class">
+			<h2 class="class-heading" id="actor-class">Actor Class</h2>
+			<p>The <code>Actor</code> class represents an entity in the game world, with functions to manipulate its components and properties.</p>
+
+			<h3>Methods</h3>
+			<div class="api-call">
+				<h4>GetName()</h4>
+				<div class="description">
+					<strong>Description:</strong>
+					<p>Returns the name of the actor.</p>
+				</div>
+				<div class="example">
+					<strong>Example:</strong>
+					<code>local actorName = actor:GetName()</code>
+				</div>
+			</div>
+			<div class="api-call">
+				<h4>GetID()</h4>
+				<div class="description">
+					<strong>Description:</strong>
+					<p>Returns the ID of the actor.</p>
+				</div>
+				<div class="example">
+					<strong>Example:</strong>
+					<code>local actorID = actor:GetID()</code>
+				</div>
+			</div>
+			<div class="api-call">
+				<h4>GetComponent(type_name)</h4>
+				<div class="description">
+					<strong>Description:</strong>
+					<p>Returns a reference to the first component of type <code>type_name</code>. Returns <code>nil</code> if a component of type <code>type_name</code> doesn't exist.</p>
+				</div>
+				<div class="example">
+					<strong>Example:</strong>
+					<code>local transform = actor:GetComponent("Transform")</code>
+				</div>
+			</div>
+			<div class="api-call">
+				<h4>GetComponents(type_name)</h4>
+				<div class="description">
+					<strong>Description:</strong>
+					<p>Returns a reference to all components of type <code>type_name</code> in the form of an indexed table. Returns <code>nil</code> if a component of type <code>type_name</code> doesn't exist.</p>
+				</div>
+				<div class="example">
+					<strong>Example:</strong>
+					<code>local sprite_renderers = actor:GetComponent("SpriteRenderer")</code>
+					<code>sprite_renderers[1].sprite = "sprite_1"</code>
+				</div>
+			</div>
+			<div class="api-call">
+				<h4>GetComponentByKey(key)</h4>
+				<div class="description">
+					<strong>Description:</strong>
+					<p>Returns a reference to the component with the key <code>key</code>. Returns <code>nil</code> if a component with the key <code>key</code> doesn't exist.</p>
+				</div>
+				<div class="example">
+					<strong>Example:</strong>
+					<code>local first_component = actor:GetComponentByKey("1")</code>
+				</div>
+			</div>
+			<div class="api-call">
+				<h4>AddComponent(type_name)</h4>
+				<div class="description">
+					<strong>Description:</strong>
+					<p>Add component of type <code>type_name</code> to actor and return reference to it. The new component should begin executing lifecycle functions on the next frame. The new comopnent's key will be <code>rn</code>, where <code>r</code> denotes a component created at runtime and <code>n</code> is the number of times that <code>AddComponent(type_name)</code> has been called in the entire program.</p>
+				</div>
+				<div class="example">
+					<strong>Example:</strong>
+					<code>local sprite_renderer = actor:AddComponent("SpriteRenderer")</code>
+					<code>sprite_renderer.sprite = "new_sprite"</code>
+				</div>
+			</div>
+			<div class="api-call">
+				<h4>RemoveComponent(component_ref)</h4>
+				<div class="description">
+					<strong>Description:</strong>
+					<p>Removes component <code>component_ref</code>from the actor.</p>
+				</div>
+				<div class="example">
+					<strong>Example:</strong>
+					<code>local sprite_renderer = actor:GetComponent("SpriteRenderer")</code>
+					<code>actor:RemoveComponent(sprite_renderer)</code>
+				</div>
+			</div>
+		</div>
+
+		<div class="class-section" id="actor-class">
+			<h2 class="class-heading" id="vector2-class">Vector2 Class</h2>
+			<p>The <code>Vector2</code> class represents an 2D mathematical vector. Supports adding and subtracting of vetors as well as scalar multiplication.</p>
+			<strong>Members:</strong>
+			<p><code>x</code> - The x component of the vector.</p>
+			<p><code>y</code> - The y component of the vector.</p>
+			<h3>Methods</h3>
+			<div class="api-call">
+				<h4>Normalize()</h4>
+				<div class="description">
+					<strong>Description:</strong>
+					<p>Converts this vector into a unit vector. Returns the length.</p>
+				</div>
+				<div class="example">
+					<strong>Example:</strong>
+					<code>local vector = Vector2(2, 5)</code><br>
+					<code>vector.Normalize()</code>
+				</div>
+			</div>
+			<div class="api-call">
+				<h4>Length()</h4>
+				<div class="description">
+					<strong>Description:</strong>
+					<p>Returns the length of the vector.</p>
+				</div>
+				<div class="example">
+					<strong>Example:</strong>
+					<code>local vector = Vector2(2, 5)</code><br>
+					<code>Debug.Log(vector.Length())</code>
+				</div>
+			</div>
+			<div class="api-call">
+				<h4>Vector2.Distance(a, b)</h4>
+				<div class="description">
+					<strong>Description:</strong>
+					<p>A static Vector2 function. Returns <code>Length(a - b)</code>.</p>
+				</div>
+				<div class="example">
+					<strong>Example:</strong>
+					<code>local a = Vector2(2, 5)</code><br>
+					<code>local b = Vector2(-1, -3)</code><br>
+					<code>Debug.Log(Vector2.Distance(a, b))</code>
+				</div>
+			</div>
+			<div class="api-call">
+				<h4>Vector2.Dot(a, b)</h4>
+				<div class="description">
+					<strong>Description:</strong>
+					<p>A static Vector2 function. Returns the dot product of the two vectors.</p>
+				</div>
+				<div class="example">
+					<strong>Example:</strong>
+					<code>local a = Vector2(2, 5)</code><br>
+					<code>local b = Vector2(-1, -3)</code><br>
+					<code>local dot_product = Vector2.Dot(a, b)</code>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="application-api">
+		<h2 class="section-heading">Application API</h2>
+		<div class="api-call">
+			<h2>Application.Quit()</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Exits the application immediately with error code 0.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Application.Quit()</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Application.Sleep(milliseconds)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Puts the application to sleep for the specified number of milliseconds.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>milliseconds</code> - Integer. The number of milliseconds the app will sleep for.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Application.Sleep(1000)</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Application.GetFrame()</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Returns the current frame number.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Application.GetFrame()</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Application.OpenURL(url)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Opens the specified web page in the user’s default browser.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>url</code> - String. The URL of the web page to open.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Application.OpenURL("http://www.example.com")</code>
+			</div>
+		</div>
+	</section>
+
+	<section id="input-api">
+		<h2 class="section-heading">Input API</h2>
+		<div class="api-call">
+			<h2>Input.GetKey(keycode)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Returns true if the specified keycode is held down on the current frame.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>keycode</code> - The keycode to check.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Input.GetKey("space")</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Input.GetKeyDown(keycode)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Returns true if the keycode became pressed on the current frame.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>keycode</code> - The keycode to check for a press event.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Input.GetKeyDown("a")</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Input.GetKeyUp(keycode)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Returns true if the keycode became lifted on the current frame.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>keycode</code> - The keycode to check for a release event.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Input.GetKeyUp("up")</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Input.GetMousePosition()</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Returns the current mouse position as a table with x and y coordinates.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>local position = Input.GetMousePosition()</code><br>
+				<code>print("X: " .. position.x .. ", Y: " .. position.y)</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Input.GetMouseButton(button_num)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Returns true if the specified mouse button is currently pressed.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>button_num</code> - The mouse button number (1 for left, 2 for middle, 3 for right).</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Input.GetMouseButton(1)</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Input.GetMouseButtonDown(button_num)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Returns true if the specified mouse button was pressed down on this frame.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>button_num</code> - The mouse button number to check.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Input.GetMouseButtonDown(3)</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Input.GetMouseButtonUp(button_num)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Returns true if the specified mouse button was lifted on this frame.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>button_num</code> - The mouse button number to check for a release event.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Input.GetMouseButtonUp(2)</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Input.GetMouseScrollDelta()</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Returns the mouse scroll wheel delta as a float. Returns 0 if there was no scroll event on this frame.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>local delta = Input.GetMouseScrollDelta()</code><br>
+				<code>print("Mouse scroll delta: " .. delta)</code>
+			</div>
+		</div>
+	</section>
+
+	<section id="actor-api">
+		<h2 class="section-heading">Actor API</h2>
+		<div class="api-call">
+			<h2>Actor.Instantiate(actor_template_name)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Creates a new actor based on the specified actor template and returns a reference to it. The actor's components will not execute until the next frame, but the actor is discoverable via <code>Actor.Find()</code> or <code>Actor.FindAll()</code> immediately.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>actor_template_name</code> - The name of the actor template to instantiate.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>local newActor = Actor.Instantiate("Enemy")</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Actor.Destroy(actor)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Destroys an actor, removing it and all of its components from the scene. No lifecycle functions of the actor's components will run after this call. The actual destruction of the actor occurs at the end of the current frame, after all <code>OnLateUpdate</code> calls.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>actor</code> - The actor to destroy.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Actor.Destroy(someActor)</code>
+			</div>
+		</div>
+	</section>
+
+	<section id="audio-api">
+		<h2 class="section-heading">Audio API</h2>
+		<div class="api-call">
+			<h2>Audio.Play(channel, clip_name, does_loop)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Begins playing the specified audio clip on the specified channel, with an option to loop the audio.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>channel</code> - The audio channel on which to play the clip.</p>
+				<p><code>clip_name</code> - The name of the audio clip to play.</p>
+				<p><code>does_loop</code> - Boolean value indicating whether the audio clip should loop (true) or play once (false).</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Audio.Play(1, "background_music", true)</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Audio.Halt(channel)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Halts audio playback on the specified channel.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>channel</code> - The audio channel whose playback will be halted.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Audio.Halt(1)</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Audio.SetVolume(channel, volume)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Alters the volume of an audio channel.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>channel</code> - The channel whose volume will be adjusted.</p>
+				<p><code>volume</code> - The new volume level as an integer, ranging from 0 (silent) to 128 (maximum volume).</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Audio.SetVolume(1, 64)</code>
+			</div>
+		</div>
+	</section>
+
+	<section id="text-api">
+		<h2 class="section-heading">Text API</h2>
+		<div class="api-call">
+			<h2>Text.Draw(str_content, x, y, font_name, font_size, r, g, b, a)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Draws text on the screen at the specified position and with the given appearance settings.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>str_content</code> - The string content to draw.</p>
+				<p><code>x</code>, <code>y</code> - The x and y screen coordinates where the text will begin.</p>
+				<p><code>font_name</code> - The name of the font to use.</p>
+				<p><code>font_size</code> - The size of the font.</p>
+				<p><code>r</code>, <code>g</code>, <code>b</code>, <code>a</code> - The red, green, blue, and alpha values for the text color. Each component ranges from 0 to 255.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Text.Draw("Hello, World!", 100, 50, "Arial", 24, 255, 255, 255, 255)</code>
+			</div>
+		</div>
+	</section>
+
+	<section id="image-api">
+		<h2 class="section-heading">Image API</h2>
+		<div class="api-call">
+			<h2>Image.DrawUI(image_name, x, y)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Draws an image to the UI layer using screen coordinates, unaffected by the camera. Images must be redrawn every frame to remain visible. Defaults to white color and full opacity. UI elements render behind text elements by default, with a default sorting order of 0.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>image_name</code> - The name of the image to draw.</p>
+				<p><code>x</code>, <code>y</code> - Screen coordinates for where to draw the image.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Image.DrawUI("logo", 100, 200)</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Image.DrawUIEx(image_name, x, y, r, g, b, a, sorting_order)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Extended version of DrawUI, allowing for tint and alpha modifications as well as a specified sorting order. Numeric parameters are treated as floats but are downcasted to integers in C++.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>image_name</code> - The name of the image to draw.</p>
+				<p><code>x</code>, <code>y</code> - Screen coordinates for where to draw the image.</p>
+				<p><code>r</code>, <code>g</code>, <code>b</code>, <code>a</code> - The red, green, blue, and alpha values for the image color. Each component ranges from 0 to 255.</p>
+				<p><code>sorting_order</code> - The relative order in which to draw images on the UI.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Image.DrawUIEx("hero_icon", 400, 300, 255, 0, 0, 128, 1)</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Image API</h2>
+			<h2>Image.Draw(image_name, x, y)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Draws an image in scene coordinates, affected by camera position and zoom. Assumes the pivot point is at the center of the image. This call must be made every frame to maintain visibility, rendering behind UI elements.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>image_name</code> - The name of the image to draw.</p>
+				<p><code>x</code>, <code>y</code> - Screen coordinates for where to draw the image.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Image.Draw("background", 0, 0)</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Image.DrawEx(image_name, x, y, rotation_degrees, scale_x, scale_y, pivot_x, pivot_y, r, g, b, a, sorting_order)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Draws an image with extended options for rotation, scaling, tint, alpha, and sorting order. Parameters for rotation, colors, and sorting order are treated as floats but downcasted to integers in C++.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>image_name</code> - The name of the image to draw.</p>
+				<p><code>x</code>, <code>y</code> - Screen coordinates for where to draw the image.</p>
+				<p><code>rotation_degrees</code> - An angle in degrees that indicates the rotation that will be applied to the image, rotating it in a clockwise direction.</p>
+				<p><code>scale_x</code>, <code>scale_y</code> - Alters the size of an image on the x and y axis, where 1 is the normal size.</p>
+				<p><code>r</code>, <code>g</code>, <code>b</code>, <code>a</code> - The red, green, blue, and alpha values for the image color. Each component ranges from 0 to 255.</p>
+				<p><code>sorting_order</code> - The relative order in which to draw images on the UI.</p>
+				<p>Image name, position, rotation, scale, pivot point, color, alpha, and sorting order details.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Image.DrawEx("enemy_sprite", 500, 500, 45, 1.0, 1.0, 0.5, 0.5, 255, 255, 255, 255, 2)</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Image.DrawPixel(x, y, r, g, b, a)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Draws a single pixel at specified screen coordinates with the given color and alpha.
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>x</code>, <code>y</code> - Screen coordinates for where to draw the pixel.</p>
+				<p><code>r</code>, <code>g</code>, <code>b</code>, <code>a</code> - The red, green, blue, and alpha values for the pixel color. Each component ranges from 0 to 255.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Image.DrawPixel(500, 500, 255, 255, 255, 255)</code>
+			</div>
+		</div>
+	</section>
+
+	<section id="camera-api">
+		<h2 class="section-heading">Camera API</h2>
+		<div class="api-call">
+			<h2>Camera.SetPosition(x, y)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Sets the camera's position in the scene using floating-point coordinates.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>x</code>, <code>y</code> - The x and y coordinates to set the camera's position to.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Camera.SetPosition(100.0, 200.0)</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Camera.GetPositionX()</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Returns the x-coordinate of the camera's position as a float.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>local x = Camera.GetPositionX()</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Camera.GetPositionY()</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Returns the y-coordinate of the camera's position as a float.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>local y = Camera.GetPositionY()</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Camera.SetZoom(zoom_factor)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Sets the camera's zoom level in the scene. The zoom factor is a float, adjusting the render scale for <code>Image.Draw()</code> and <code>Image.DrawEx()</code> calls accordingly.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>zoom_factor</code> - The zoom factor to set, represented as a float.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Camera.SetZoom(1.5)</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Camera.GetZoom()</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Returns the current zoom factor of the camera as a float.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>local zoom = Camera.GetZoom()</code>
+			</div>
+		</div>
+	</section>
+
+	<section id="scene-api">
+		<h2 class="section-heading">Scene API</h2>
+		<div class="api-call">
+			<h2>Scene.Load(scene_name)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Loads a new scene at the beginning of the next frame. If called multiple times within a single frame, only the most recent <code>scene_name</code> will be loaded.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>scene_name</code> - The name of the scene to load.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Scene.Load("basic")</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Scene.GetCurrent()</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Returns the name of the current scene, excluding the “.scene” file extension.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>local currentScene = Scene.GetCurrent()</code>
+			</div>
+		</div>
+
+		<div class="api-call">
+			<h2>Scene.DontDestroy(actor)</h2>
+			<div class="description">
+				<strong>Description:</strong>
+				<p>Marks an actor to persist and not be unloaded or destroyed when a new scene is loaded. This is particularly useful for maintaining global “manager” actors across different scenes.</p>
+			</div>
+			<div class="parameters">
+				<strong>Parameters:</strong>
+				<p><code>actor</code> - A reference to the actor that should not be destroyed.</p>
+			</div>
+			<div class="example">
+				<strong>Example:</strong>
+				<code>Scene.DontDestroy(self.actor)</code>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>
