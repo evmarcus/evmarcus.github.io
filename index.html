@@ -6,13 +6,37 @@
 -->
 <html>
 <head>
-	<title>Evan Marcus Portfolio Website</title>
+	<title>Evan Marcus | Game Developer, Programmer, Animator Portfolio</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=0.5, user-scalable=no" />
+	<meta name="description" content="Evan Marcus – Game Developer, Programmer, and Animator. Explore my Unity projects, custom game engine, and 3D animation work.">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="assets/css/main.css" />
 	<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	<link rel="icon" href="images/Cube-Logo-small.png" type="image/png">
+
+	<!-- Open Graph -->
+	<meta property="og:title" content="Evan Marcus | Game Developer Portfolio">
+	<meta property="og:description" content="Explore Unity projects, custom game engines, and 3D animation work.">
+	<meta property="og:image" content="https://evmarcus.github.io/images/Evan_Headshot_2024.jpg">
+	<meta property="og:url" content="https://evmarcus.github.io">
+	<meta property="og:type" content="website">
+
+	<script type="application/ld+json">
+		{
+		  "@context": "https://schema.org",
+		  "@type": "Person",
+		  "name": "Evan Marcus",
+		  "url": "https://evmarcus.github.io",
+		  "sameAs": [
+			"https://www.linkedin.com/in/evan-marcus-umich/",
+			"https://evmarcus.itch.io/",
+			"https://github.com/evmarcus"
+		  ],
+		  "jobTitle": "Game Developer",
+		  "alumniOf": "University of Michigan"
+		}
+	</script>
 </head>
 <body class="is-preload">
 
@@ -51,7 +75,7 @@
 							<li><a href="https://www.linkedin.com/in/evan-marcus-umich/" class="button">LinkedIn</a></li>
 						</ul>
 					</div>
-					<span class="image"><img src="images/Evan_Headshot_2024.jpg" alt="" /></span>
+					<span class="image"><img src="images/Evan_Headshot_2024.jpg" alt="Evan Marcus headshot" /></span>
 				</div>
 			</section>
 
@@ -99,19 +123,19 @@
 							<hr id="horizontal-line">
 							<section>
 								<div>
-									<img src="images/EECS298Banner.png" style="mix-blend-mode: multiply; max-width: 80%; max-height: 325px;" />
+									<img src="images/EECS298Banner.png" alt="EECS 298 Banner" style="mix-blend-mode: multiply; max-width: 80%; max-height: 325px;" />
 								</div>
 								<!--<iframe width="560" height="315" src="https://www.youtube.com/embed/oPMJyvH2ZZw?si=u55fBzvgkurmJPWc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>-->
 								<!-- Embedded web game (delayed load until player clicks) credit to Austin Yarger at eecs298.com-->
 								<div id="game-container" class="w3-content w3-display-container" style="display: flex; justify-content: center; align-items: center; gap: 20px; /* Adds spacing between elements */ border-radius: 50px;">
 
-									<img src="images/MarioJumping.gif" style="margin-left: 20px; border-radius: 10px; max-width: 25%; max-height: 325px;" />
+									<img src="images/MarioJumping.gif" alt="Animated GIF of Mario Jumping developed for an assignment" style="margin-left: 20px; border-radius: 10px; max-width: 25%; max-height: 325px;" />
 									<button class="glow-bounce-button" onclick="loadGame()">Launch Game</button>
 									<video autoplay muted loop id="background-video" style="max-width: 50%; max-height: 436px;">
 										<source src="videos/298Footage.mp4" type="video/mp4" style="max-width: 50%; max-height: 436px;" />
 
 									</video>
-									<img src="images/298Homework.gif" style="mix-blend-mode: multiply; max-width: 25%; max-height: 325px;" />
+									<img src="images/298Homework.gif" alt="A pan over the entirety of a homework I developed for EECS 298" style="mix-blend-mode: multiply; max-width: 25%; max-height: 325px;" />
 
 
 								</div>
@@ -133,7 +157,7 @@
 							<hr id="horizontal-line">
 							<section>
 								<div>
-									<img src="images/ParticleSystem.gif" style="mix-blend-mode: multiply; max-width: 80%; max-height: 325px;" />
+									<img src="images/ParticleSystem.gif" alt="Animated GIF of a candle that I made using my engine's built in particle system, which has gone on to be used as a test case for engines in EECS 498.007" style="mix-blend-mode: multiply; max-width: 80%; max-height: 325px;" />
 								</div>
 								<p></p>
 								<h3 id="bold">
