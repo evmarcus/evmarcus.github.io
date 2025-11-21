@@ -1,0 +1,192 @@
+<!-- 
+    This was an assignment I created for EECS 493 (UI Development) at the University 
+    of Michigan in 2023. I wrote the HTML, CSS, and JavaScript code to explicitly match 
+    an example completed version of the assignment. It had to look and play the exact 
+    same down to the pixel, and came with limitations, such as all style being in the CSS, 
+    not in the HTML, and needing to use jquery for gameplay movement.
+-->
+<!-- ====================== EECS 493 Assignment 3 Starter Code ====================== -->
+<html>
+<head>
+  <title>Asteroids</title>
+  <!-- JS -->
+  <script src='scripts/jquery.min.js'></script>
+  <script src='scripts/page.js'></script>
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="style/index.css">
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class='outer-container'>
+      <div class='game-window'>
+          <!-- ================ ASSIGNMENT 2 CODE GOES HERE ================ -->
+          <!-- Main Menu -->
+          <div id="landing-page">
+              <div id='header'>
+                  <img src="./src/asteroid.png">
+                  Asteroids (Class Project)
+                  <img src="./src/asteroid.png">
+              </div>
+              <div>
+                  <!--<button id="play_button" onclick="tutorial_toggle(true)">Play game!</button>-->
+                  <button id="play-button">Play Game!</button>
+              </div>
+              <div>
+                  <button onclick="settings_toggle(true)">Settings</button>
+              </div>
+              <div>
+                  <button onclick="return_to_portfolio()">Back to Portfolio</button>
+              </div>
+          </div>
+
+          <!-- Settings -->
+          <div id="settings-window">
+              <div id="settings-panel">
+                  <div id="settings-header">Settings</div>
+                  <div>
+                      <div id="settings-header">
+                          <div>Volume: <span id="sliderValue"></span></div>
+                      </div>
+                      <div>
+                          <div class="slidecontainer">
+                              <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                          </div>
+                      </div>
+                  </div>
+                  <div>
+                      <div id="settings-header">
+                          Difficulty
+                      </div>
+                      <div id="settings-buttons">
+                          <button>Easy</button>
+                          <button>Normal</button>
+                          <button>Hard</button>
+                      </div>
+                  </div>
+                  <div>
+                      <button onclick="settings_toggle(false)">Close</button>
+                  </div>
+              </div>
+          </div>
+          <!-- Tutorial -->
+          <div id="tutorial-window">
+              <div id="tutorial-panel">
+                  <div id="tutorial-header">How to play</div>
+                  <div id="tutorial-header"><img src="./src/asteroid.png"></div>
+                  <div>
+                      <span id="tutorial-bold">Collect </span>
+                      <span id="tutorial-italics">shields</span>
+                      <span id="tutorial-basic">! </span>
+                      <span id="tutorial-bold">Travel </span>
+                      <span id="tutorial-basic">through </span>
+                      <span id="tutorial-italics">portals </span>
+                      <span id="tutorial-basic">to the next level!</span>
+                  </div>
+                  <div id="tutorial-img-holder"><img src="./src/shield.gif"><img src="./src/port.gif"></div>
+                  <div>
+                      <span id="tutorial-bold">Gain </span>
+                      <span id="tutorial-basic">as many </span>
+                      <span id="tutorial-italics">points </span>
+                      <span id="tutorial-basic">as possible!</span>
+                  </div>
+                  <div>
+                      <button onclick="game_toggle()">Start</button>
+                  </div>
+                  <div id="tutorial-header"> </div>
+              </div>
+          </div>
+          <!-- =================== ASSIGNMENT 2 CODE END =================== -->
+          <!-- Actual Game -->
+          <div id="actual-game">
+              <!-- Get Ready -->
+              <div id="get-ready-window">
+                  <div id="get-ready-elts">
+                      <div id="header">Get Ready!</div>
+                      <div>
+                          <img src="./src/arrowkeys.png" />
+                      </div>
+                      <div id="text">Use arrow keys to move.</div>
+                  </div>
+              </div>
+              <!-- Asteroids -->
+              <div class="asteroidSection">
+                  <div class="curAsteroid"></div>
+                  <div class="player">
+                      <img id="player-sprite" src="./src/player/player.gif">
+                  </div>
+              </div>
+              <!-- Score Panel -->
+              <div id="score-container">
+                  <div id="Score-UI">
+                      <div id="title">SCORE</div>
+                      <div class="info" id="score">1560</div>
+                      <div id="title">DANGER</div>
+                      <div class="info" id="danger">20</div>
+                      <div id="title">LEVEL</div>
+                      <div class="info" id="level">1</div>
+                  </div>
+                  <div id="score-container">
+                      <button onclick="toggle_pause()" id="pause-button">
+                          <img src="./src/pause.png">
+                      </button>
+                  </div>
+              </div>
+              <!-- Pause Screen Somewhere In Here -->
+              <div id="darken"></div>
+              <div id="pause-window">
+                  <div id="pause-panel">
+                      <div id="header">Game Paused</div>
+                      <div>
+                          <img src="./src/pause-rocket.gif" />
+                      </div>
+                      <div>
+                          <div id="pause-buttons">
+                              <div id="button-shelf">
+                                  <button id="resume-button" onclick="toggle_pause()">Resume</button>
+                              </div>
+                              <div id="button-shelf">
+                                  <button onclick="toggle_confirm_restart(true)">Restart</button>
+                                  <button onclick="show_landing_page()">Exit</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div id="restart-confirmation-window">
+                  <div id="pause-panel">
+                      <div id="text">Are you sure you want to restart?</div>
+                      <div id="pause-buttons">
+                          <div id="button-shelf">
+                              <button id="confirm-button" onclick="restart()">Yes</button>
+                              <button id="confirm-button" onclick="toggle_confirm_restart(false)">No</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div id="restarting-text">
+                  <div id="text">Restarting...</div>
+              </div>
+              </div>
+
+          <!-- Gameover -->
+          <div id="gameover-page">
+              <div id='header'>
+                  <img src="./src/asteroid.png">
+                  Asteroids (Class Project)
+                  <img src="./src/asteroid.png">
+              </div>
+              <div id="panel">
+                  <div id="gameover-elts">
+                      <div>GAME OVER!</div>
+                      <div>YOU HAVE TO FIX YOUR SPACESHIP!</div>
+                      <div id="final-score">1560</div>
+                      <button onclick="show_landing_page()">Start Over</button>
+                  </div>
+              </div>
+          </div>
+
+      </div> <!-- end game-window -->
+  </div> <!-- end outer-container -->
+</body>
+</html>
